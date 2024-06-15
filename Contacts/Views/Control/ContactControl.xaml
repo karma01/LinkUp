@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolKit ="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Contacts.Views.Control.ContactControl">
+
+    <VerticalStackLayout Spacing="20" Margin="20,10,20,0">
+        <Frame Padding="10,02,10,0">
+            <HorizontalStackLayout>
+                <Label VerticalOptions="Center">Name</Label>
+                <Entry x:Name="entryName" VerticalOptions="Center">
+                    <Entry.Behaviors>
+                        <toolKit:TextValidationBehavior
+                         x:Name="nameValidator"
+                         Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                         MinimumLength="1"
+                         />
+                    </Entry.Behaviors>
+                </Entry>
+            </HorizontalStackLayout>
+        </Frame>
+        <Frame Padding="10,02,10,0">
+            <HorizontalStackLayout>
+                <Label VerticalOptions="Center">Email</Label>
+                <Entry x:Name="entryEmail" VerticalOptions="Center">
+                    <Entry.Behaviors>
+                        <toolKit:MultiValidationBehavior x:Name="emailValidator" Flags="ValidateOnAttaching,ValidateOnValueChanged">
+                            <toolKit:TextValidationBehavior
+                                 Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                 MinimumLength="1"
+                                 toolKit:MultiValidationBehavior.Error="Please Enter the Email"
+                                  />
+                            <toolKit:EmailValidationBehavior
+                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                toolKit:MultiValidationBehavior.Error="The Format of Email is not Valid"
+                             />
+                        </toolKit:MultiValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+            </HorizontalStackLayout>
+        </Frame>
+        <Frame Padding="10,02,10,0">
+            <HorizontalStackLayout>
+                <Label VerticalOptions="Center">Phone Number</Label>
+                <Entry x:Name="entryPhone" VerticalOptions="Center"></Entry>
+            </HorizontalStackLayout>
+        </Frame>
+        <Button Text="Save" x:Name="btnUpdate" Clicked="btnUpdate_Clicked"></Button>
+        <Button Text="Cancel" x:Name="btnCancel" Clicked="btnCancel_Clicked"></Button>
+    </VerticalStackLayout>
+</ContentView>

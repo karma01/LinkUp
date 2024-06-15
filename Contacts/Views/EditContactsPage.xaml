@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control ="clr-namespace:Contacts.Views.Control"
+
+             x:Class="Contacts.Views.EditContactsPage"
+             xmlns:toolKit ="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="EditContacts">
+
+    <control:ContactControl x:Name="contactCtrl" OnSuccess="btnUpdate_Clicked" OnCancel="btnCancel_Clicked" onError="contactCtrl_onError">
+    </control:ContactControl>
+</ContentPage> 
